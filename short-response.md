@@ -12,13 +12,17 @@ The Todo Tracker API is a **RESTful** API. Identify at least **3 specific design
 
 **Your answer here**:
 
----
+The API is restful since it's endpoint URLs point to resources, as opposed to naming actions.
+
+The API is restful since it's stateless and doesn't need or use any specific or session information other than what its given.
+
+The API is restful since it's endpoints in a way, map out data using a logical hierarchal structure reflecting our model.
 
 ## Question 2 — Separation of Concerns
 
 What problem is caused by mixing data logic and request/response logic in a single file? What does separating them into a model and controller enable? Be specific about what gets harder and what gets easier.
 
-**Your answer here**:
+Mutation of our database without proper validation or inaccurate prescription of a response status. It gets easier to Isolate and root out issues in our code across our MVC, however if we have a complex hefty API it can get messy quickly.
 
 ---
 
@@ -27,6 +31,8 @@ What problem is caused by mixing data logic and request/response logic in a sing
 Walk through what happens, step by step, when the user clicks a checkbox to toggle a todo's `isDone` field. Name each file and function in your MVC structure that gets involved, in the order it runs, and describe what it does.
 
 **Your answer here**:
+
+The interface makes a fetch patch request, our corresponding controller picks this request up (after it is processed by middleware) and sends the signal to our Model, our model then makes the changes to our database Accordingly.
 
 ---
 
@@ -43,5 +49,9 @@ const createTodo = (req, res) => {
   /* 5 */ res.status(201).send(newTodo);
 };
 ```
+
+This belongs in the controller since it's dealing with the req and res.
+**Controllers validate requests, ship actions to our model, and formulate responses.**
+
 
 **Your answer here**:
